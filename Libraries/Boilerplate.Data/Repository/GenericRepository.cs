@@ -1,6 +1,6 @@
 ﻿namespace Boilerplate.Data.Repository;
 
-public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
+public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity, ISoftDelete
 {
     protected DataContext Context;
 
@@ -37,6 +37,18 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
         return entity;
     }
 
+    public async Task SoftDeleteAsync(T entity)
+    {
+        T existingEntity = await Context.Set<T>().FindAsync(entity.Id);
+
+        if (existingEntity != null)
+        {
+            existingEntity.IsDeleted = true;
+
+            await SaveChangesAsync();
+        }
+    }
+
     public async Task DeleteAsync(T entity)
     {
         Context.Set<T>().Remove(entity);
@@ -65,7 +77,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
         {
             await Context.SaveChangesAsync();
         }
-        catch (DbUpdateConcurrencyException)
+        catch (DbUpdateException)
         {
             Context.ChangeTracker.Clear();
 

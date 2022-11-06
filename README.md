@@ -146,25 +146,24 @@ As you can see in the beginning of document, the project is integrated to Sonarq
 
 You can find a couple of advices below in order to make the Insurance API better.
 
-* Adding Postman collections
-* Adding soft delete feature
-* Adding JWT authentication
-* Adding Serilog to show the logs in console and txt file (maybe Sentry integration)
+* Adding NewRelic (free) to show the logs in console and txt file (maybe Sentry integration)
 * Adding fluent validation
 * Adding mock library to put all mock objects into one place
-* Adding unit of work
 * Adding Swagger specifications
 * Adding summary comments
 * Adding versioning
-* Adding more unit tests
 * Adding integration tests
 * Adding more tests in Postman
+* Adding audit log
 * Adding custom ApiResponse object
 * Adding rate limiting (HTTP 429 status code will be returned)
 * Adding open telemetry
 * Adding Elastic APM integration for monitoring about API
 * Adding MediatR library in order to apply CQRS before the project getting bigger
-* Adding cancellation tokens (https://docs.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=net-6.0)
+* Adding cloud features
+* Adding cancellation tokens 
+* Checking Microsoft documents for performance tips
+(https://docs.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=net-6.0)
 * Adding Dockerfile
 * Adding helm charts
 * Adding Kubernetes deployment
